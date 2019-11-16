@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,6 +19,14 @@ public class HelloController {
 
         modelAndView.addObject("user", name);
         modelAndView.setViewName("home");
+        return modelAndView;
+    }
+
+    @GetMapping("/my-data")
+    ModelAndView getMyData(ModelAndView modelAndView,
+                           @RequestParam(value = "imie", defaultValue = "mariusz") String name,
+                           @RequestParam(defaultValue = "P.") String surname,
+                           @RequestParam(defaultValue = "15") int age) {
         return modelAndView;
     }
 }
